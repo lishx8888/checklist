@@ -811,7 +811,11 @@ async def main():
         "少儿","卡通","动画","儿童","宝贝","哈哈","体育","赛事","奥运","冬奥","英超","NBA","垂钓","教育","足球","台球","武术","高尔夫","测试","快乐购","广告","购物"]}
     ]
 
-    with open("itvlist.m3u", 'w', encoding='utf-8') as file:
+    # 确保output目录存在
+    import os
+    os.makedirs("output", exist_ok=True)
+    
+    with open("output/itvlist.m3u", 'w', encoding='utf-8') as file:
         file.write('#EXTM3U\n')
         
         # 遍历所有频道分类
