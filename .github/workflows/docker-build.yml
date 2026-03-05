@@ -30,7 +30,7 @@ jobs:
             itvlist:${{ steps.date.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          outputs: type=docker,dest=/tmp/itvlist-${{ steps.date.outputs.tag }}.tar
+          outputs: type=oci,dest=/tmp/itvlist-${{ steps.date.outputs.tag }}.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
