@@ -20,7 +20,7 @@ jobs:
         id: date
         run: echo "tag=$(date +'%y%m%d')" >> $GITHUB_OUTPUT
 
-      - name: Build and push
+      - name: Build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -30,3 +30,11 @@ jobs:
             itvlist:${{ steps.date.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          outputs: type=docker,dest=/tmp/itvlist-${{ steps.date.outputs.tag }}.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: itvlist-image
+          path: /tmp/itvlist-${{ steps.date.outputs.tag }}.tar
+          retention-days: 7
