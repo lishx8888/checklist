@@ -18,7 +18,7 @@ jobs:
 
       - name: Extract date for tag
         id: date
-        run: echo "::set-output name=tag::$(date +'%y%m%d')"
+        run: echo "tag=$(date +'%y%m%d')" >> $GITHUB_OUTPUT
 
       - name: Build and push
         uses: docker/build-push-action@v5
